@@ -1,3 +1,8 @@
+# Commodore 264 (C16 and Plus/4) for SoCkit
+Ported from https://github.com/MiSTer-devel/C16_MiSTer according from Somhi sockit template
+
+Follows original readme file.
+
 # [Commodore 264 (C16 and Plus/4)](https://www.c64-wiki.com/wiki/Commodore-264_series) for [MISTer](https://github.com/MiSTer-devel/Main_MiSTer/wiki)
 
 MiSTer port by Sorgelig
