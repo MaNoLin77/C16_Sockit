@@ -22,8 +22,6 @@ set_global_assignment -name SAVE_DISK_SPACE OFF
 set_global_assignment -name SMART_RECOMPILE ON
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
-# set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
-# set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS OFF
@@ -49,13 +47,15 @@ set_global_assignment -name ROUTER_CLOCKING_TOPOLOGY_ANALYSIS ON
 set_global_assignment -name ECO_OPTIMIZE_TIMING ON
 set_global_assignment -name PERIPHERY_TO_CORE_PLACEMENT_AND_ROUTING_OPTIMIZATION ON
 set_global_assignment -name PHYSICAL_SYNTHESIS_ASYNCHRONOUS_SIGNAL_PIPELINING ON
-set_global_assignment -name ALM_REGISTER_PACKING_EFFORT MEDIUM
-# set_global_assignment -name ALM_REGISTER_PACKING_EFFORT LOW
+set_global_assignment -name ALM_REGISTER_PACKING_EFFORT LOW
 set_global_assignment -name SEED 1
 
 source sys/sys.tcl
 source sys/sys_analog.tcl
 source files.qip
+
+set_global_assignment -name VERILOG_FILE sys/I2C_Controller.v
+set_global_assignment -name VERILOG_FILE sys/I2C_AV_Config.v
 set_global_assignment -name ENABLE_OCT_DONE OFF
 set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "PASSIVE SERIAL"
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
@@ -66,26 +66,5 @@ set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
 set_global_assignment -name ACTIVE_SERIAL_CLOCK FREQ_100MHZ
 
-set_global_assignment -name CDF_FILE jtag.cdf
-set_global_assignment -name QIP_FILE sys/sys.qip
-set_global_assignment -name QIP_FILE rtl/pll.qip
-set_global_assignment -name QIP_FILE sys/pll_hdmi.qip
-set_global_assignment -name QIP_FILE sys/pll_audio.qip
-set_global_assignment -name QIP_FILE sys/pll_cfg.qip
-set_global_assignment -name QIP_FILE rtl/iec_drive/iec_drive.qip
-set_global_assignment -name QIP_FILE rtl/t65/t65.qip
-set_global_assignment -name QIP_FILE rtl/sid/sid.qip
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/ddram.sv
-set_global_assignment -name VHDL_FILE rtl/gen_rom.vhd
-set_global_assignment -name VHDL_FILE rtl/gen_dpram.vhd
-set_global_assignment -name VHDL_FILE rtl/c1530.vhd
-set_global_assignment -name VERILOG_FILE rtl/mos8501.v
-set_global_assignment -name VERILOG_FILE rtl/mos6529.v
-set_global_assignment -name VERILOG_FILE rtl/colors_to_rgb.v
-set_global_assignment -name VERILOG_FILE rtl/c16_keymatrix.v
-set_global_assignment -name VERILOG_FILE rtl/ted.v
-set_global_assignment -name VERILOG_FILE rtl/c16.v
-set_global_assignment -name SYSTEMVERILOG_FILE C16.sv
-set_global_assignment -name VERILOG_FILE sys/I2C_Controller.v
-set_global_assignment -name VERILOG_FILE sys/I2C_AV_Config.v
+
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
